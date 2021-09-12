@@ -1,0 +1,4 @@
+pyodbc==4.0.30
+packaging==20.9
+pandas==1.2.5
+SQLAlchemy==1.4.22
