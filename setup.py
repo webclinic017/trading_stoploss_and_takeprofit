@@ -10,7 +10,7 @@ classifiers = [
 
 setup(
 name = 'trading_stoploss_and_takeprofit',
-version ='1.0.0',
+version ='1.0.1',
 description = 'trading_stoploss_and_takeprofit is a python program that calculate stop loss and take profit',
 url= 'https://github.com/Iankfc/trading_stoploss_and_takeprofit',
 author='ece',

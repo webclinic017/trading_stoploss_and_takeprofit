@@ -1,6 +1,6 @@
 Metadata-Version: 1.1
 Name: trading-stoploss-and-takeprofit
-Version: 0.1.dev0+d20210912
+Version: 1.0.1.dev0+g41c5f60.d20210912
 Summary: trading_stoploss_and_takeprofit is a python program that calculate stop loss and take profit
 Home-page: https://github.com/Iankfc/trading_stoploss_and_takeprofit
 Author: ece

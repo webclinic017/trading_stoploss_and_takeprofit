@@ -31,11 +31,11 @@ def func_dict_nparray_extract(df_data,
                                                                                                 bool_take_absolute_of_high_to_low_volatility_True_or_False = False)
 
     df_data['VolatilityRank'] = dict_pdseries_volatility_parameters['VolatilityRank']
-    df_data['RollingPercentChangeHighToLow'] = dict_pdseries_volatility_parameters['RollingPercentChangeHighToLow']
+    df_data['PercentChangeHighToLow'] = dict_pdseries_volatility_parameters['PercentChangeHighToLow']
     
     #%%
 
-    df_data['StopLossRate'] = df_data['RollingPercentChangeHighToLow'].abs().rolling(str_period_sampling).apply(lambda x: np.quantile(x,float_volatility_high_to_low_quantile))
+    df_data['StopLossRate'] = df_data['PercentChangeHighToLow'].abs().rolling(str_period_sampling).apply(lambda x: np.quantile(x,float_volatility_high_to_low_quantile))
     df_data['StopLossRate'] = df_data['StopLossRate'].fillna(method = 'bfill')
     #%%
     df_data['TakeProfitRate'] = df_data['StopLossRate'] * int_takeprofit_multiplier
@@ -50,17 +50,17 @@ def func_dict_nparray_extract(df_data,
 
 if __name__  == '__main__':
     from asset_price_etl import etl_fx_histadata_001 as etl
-    df_data = etl._function_extract(_str_valuedate_start = '1/1/2018',
-                                    _str_valuedate_end = '12/7/2019',
+    df_data = etl._function_extract(_str_valuedate_start = '1/1/2019',
+                                    _str_valuedate_end = '12/7/2020',
                                     _str_resample_frequency = 'D')
     
     dict_nparray_takeprofit_and_stoploss  = func_dict_nparray_extract(  df_data = df_data,
-                                                                        str_period_sampling = '5D',
+                                                                        str_period_sampling = '2D',
                                                                         str_column_open_column_name = 'Open',
                                                                         str_column_high_column_name = 'High',
                                                                         str_column_low_column_name = 'Low',
                                                                         str_column_close_column_name = 'Close',
-                                                                        str_rolling_sampling_period ='30D',
+                                                                        str_rolling_sampling_period ='180D',
                                                                         float_volatility_high_to_low_quantile = 0.80,
                                                                         int_takeprofit_multiplier = 3)
     
